@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# set root pointer
+xsetroot -cursor_name left_ptr
+
+# key bindings
+sxhkd &
+
+
+# enable numlock, commented out for laptop users
+#numlockx &
+# required for xfce settings to work
+xfsettingsd &
+# fancy window switcher
+# compton
+al-compton-pipemenu --restart &
+#skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
+# start the panel
+sleep 1; al-tint2-session &
+# start conky
+al-conky-session --autostart &
+# restore wallpaper
+sleep 1; nitrogen --restore &
+
+
+# all
+sleep 1; xfce4-power-manager &
+sleep 1; nm-applet &
+sleep 1; volumeicon &
+sleep 1; flameshot &
+sleep 1; copyq &
+sleep 2; rambox &
+
+# Set some bsp specific stuff
+bspc monitor -d I II III IV V VI VII V
+wmname LG3D
+
+bspc config window_gap 2
+bspc config border_width 2
+
+bspc config split_ratio 0.50
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+
+bspc config pointer_modifier mod1
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+bspc config focus_follows_pointer true
+bspc config click_to_focus button1
+
+#bspc config borderless_monocle      true
+#bspc config gapless_monocle         true
+#bspc config paddingless_monocle     true
+#bspc config click_to_focus          true
+bspc config focused_border_color    '#1793D1'
+#bspc config pointer_modifier        mod1
